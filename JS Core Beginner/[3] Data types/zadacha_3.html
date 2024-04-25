@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Data types</title>
+</head>
+<body>
+    <input type="number" id="inputNumber" placeholder="Введите число">
+    <button onclick="sumFirstAndLastDigit()">Получить сумму</button>
+
+    <script>
+        function sumFirstAndLastDigit() {
+            var number = document.getElementById("inputNumber").value;
+            if (isNaN(number)) {
+                console.log("Введите корректное число");
+                return;
+            }
+            var numberStr = number.toString();
+            var firstDigit = parseInt(numberStr.charAt(0));
+            var lastDigit = parseInt(numberStr.charAt(numberStr.length - 1));
+            var sum = firstDigit + lastDigit;
+            console.log("Сумма первой и последней цифры числа:", sum);
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Classes</title>
+</head>
+<body>
+  <div id="rectangle-info">
+    
+  </div>
+  <script>
+    class Rectangle {
+      constructor(width, height) {
+        this.width = width;
+        this.height = height;
+      }
+
+      calculateArea() {
+        return this.width * this.height;
+      }
+
+      calculatePerimeter() {
+        return 2 * (this.width + this.height);
+      }
+    }
+
+    const rectangle = new Rectangle(5, 3);
+    const area = rectangle.calculateArea();
+    const perimeter = rectangle.calculatePerimeter();
+
+    const rectangleInfo = document.getElementById("rectangle-info");
+    rectangleInfo.innerHTML = `
+      <p>Ширина: ${rectangle.width}</p>
+      <p>Высота: ${rectangle.height}</p>
+      <p>Площадь: ${area}</p>
+      <p>Периметр: ${perimeter}</p>
+    `;
+  </script>
+</body>
+</html>

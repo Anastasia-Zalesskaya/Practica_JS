@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error Handling</title>
+    <script>
+        function getProperty(obj, prop) {
+            try {
+                return obj[prop];
+            } catch (error) {
+                if (error instanceof TypeError) {
+                    console.error("TypeError: Property access failed. The object or property may be undefined.");
+                } else {
+                    throw error;
+                }
+            }
+        }
+
+        document.addEventListener("DOMContentLoaded", function() {
+            const exampleObject = { key: "value" };
+            const propertyName = "key";
+            console.log(getProperty(exampleObject, propertyName));
+            
+            const undefinedObject = undefined;
+            console.log(getProperty(undefinedObject, propertyName)); 
+        });
+    </script>
+</head>
+<body>
+</body>
+</html>

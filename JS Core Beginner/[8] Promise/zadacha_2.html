@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Promise</title>
+</head>
+<body>
+  <div id="results"></div>
+
+  <script>
+    function loadURL(url) {
+      return new Promise((resolve, reject) => {
+        const xhr = new XMLHttpRequest();
+        xhr.open("GET", url);
+        xhr.onload = () => {
+          if (xhr.status === 200) {
+            resolve(xhr.responseText);
+          } else {
+            reject(new Error(`Failed to load ${url}: ${xhr.status}`));
+          }
+        };
+        xhr.onerror = () => reject(new Error(`Failed to load ${url}`));
+        xhr.send();
+      });
+    }
+    function loadURLsInParallel(urls) {
+      const promises = urls.map(url => loadURL(url));
+      return Promise.all(promises);
+    }
+
+    const urls = ["https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Regular_expressions", "https://developer.mozilla.org/en-US/docs/Web/JavaScript/Guide/Indexed_collections"];
+    loadURLsInParallel(urls)
+      .then(results => {
+        const resultsDiv = document.getElementById("results");
+        results.forEach((result, index) => {
+          resultsDiv.innerHTML += `<p>Content of URL ${index + 1}: ${result}</p>`;
+        });
+      })
+      .catch(error => {
+        console.error("Error loading URLs:", error);
+      });
+  </script>
+</body>
+</html>
+

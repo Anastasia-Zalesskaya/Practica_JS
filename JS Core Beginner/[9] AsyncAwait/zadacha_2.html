@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsyncAwait</title>
+</head>
+<body>
+    <div id="result"></div>
+
+    <script>
+        async function fetchData(url) {
+            const response = await fetch(url);
+            if (!response.ok) {
+                throw new Error(`Failed to fetch data from ${url}`);
+            }
+            return response.json();
+        }
+
+        async function postData(url, data) {
+            const response = await fetch(url, {
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(data)
+            });
+            if (!response.ok) {
+                throw new Error(`Failed to post data to ${url}`);
+            }
+            return response.json();
+        }
+
+        async function processServers() {
+            try {
+                const firstServerData = await fetchData('https://');
+                const secondServerResponse = await postData('https://', firstServerData);
+                document.getElementById('result').innerText = JSON.stringify(secondServerResponse);
+            } catch (error) {
+                console.error('An error occurred:', error.message);
+            }
+        }
+        processServers();
+    </script>
+</body>
+</html>

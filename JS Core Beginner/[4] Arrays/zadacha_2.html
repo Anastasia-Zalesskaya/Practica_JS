@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Arrays</title>
+</head>
+<body>
+    <script>
+        function sumOfFirstHalf(arr) {
+            if (arr.length === 0) {
+                return 0;
+            }
+            const middleIndex = Math.floor(arr.length / 2);
+            let sum = 0;
+            for (let i = 0; i < middleIndex; i++) {
+                sum += arr[i];
+            }
+
+            return sum;
+        }
+        const numbers = [1, 2, 3, 4, 5, 6];
+        const result = sumOfFirstHalf(numbers);
+        console.log("Сумма первой половины массива:", result);
+    </script>
+</body>
+</html>

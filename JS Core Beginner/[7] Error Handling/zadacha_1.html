@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Error Handling</title>
+    <script>
+        function checkInteger(num) {
+            if (Number.isInteger(num)) {
+                return num;
+            } else {
+                throw new Error("Введенное значение не является целым числом.");
+            }
+        }
+
+        try {
+            console.log(checkInteger(5)); 
+            console.log(checkInteger(3.14)); 
+        } catch (error) {
+            console.error(error.message);
+        }
+    </script>
+</head>
+<body>
+</body>
+</html>

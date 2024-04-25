@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AsyncAwait</title>
+</head>
+<body>
+    <script>
+        async function fetchDataFromMultipleServers(urls) {
+            try {
+                const promises = urls.map(url => fetch(url));
+                const responses = await Promise.all(promises);
+                const data = await Promise.all(responses.map(response => response.json()));
+                return data;
+            } catch (error) {
+                console.error('An error occurred:', error);
+                throw error;
+            }
+        }
+        const serverUrls = [
+            'https://',
+            'https://',
+            'https://'
+        ];
+
+        fetchDataFromMultipleServers(serverUrls)
+            .then(data => {
+                console.log('Data from multiple servers:', data);
+            })
+            .catch(error => {
+                console.error('Failed to fetch data from multiple servers:', error);
+            });
+    </script>
+</body>
+</html>

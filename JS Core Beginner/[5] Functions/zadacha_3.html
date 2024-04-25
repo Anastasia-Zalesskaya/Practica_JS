@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Functions</title>
+  <script>
+    function firstNonRepeatingChar(str) {
+      const charCount = {};
+      for (let char of str) {
+        charCount[char] = (charCount[char] || 0) + 1;
+      }
+      for (let char of str) {
+        if (charCount[char] === 1) {
+          return char;
+        }
+      }
+      return null;
+    }
+    const str = "hello";
+    console.log("Первый неповторяющийся символ в строке", str, ":", firstNonRepeatingChar(str));
+  </script>
+</head>
+<body>
+</body>
+</html>

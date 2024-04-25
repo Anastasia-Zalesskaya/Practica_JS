@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Classes</title>
+</head>
+<body>
+<script>
+  class Person {
+    constructor(name, age, country) {
+      this.name = name;
+      this.age = age;
+      this.country = country;
+    }
+
+    displayInfo() {
+      return `Имя: ${this.name}, Возраст: ${this.age}, Страна: ${this.country}`;
+    }
+  }
+
+  const person1 = new Person("Анастасия", 19, "Беларусь");
+
+  console.log(person1.displayInfo());
+</script>
+</body>
+</html>

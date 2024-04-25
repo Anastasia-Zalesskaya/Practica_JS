@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Function</title>
+</head>
+<body>
+  <label for="intervalInput">Введите интервал: </label>
+  <input type="number" id="intervalInput" min="100" step="100" value="1000">
+  <button id="startButton">Начать</button>
+  
+  <script>
+    function performOperation() {
+      console.log("Заданная операция выполняется...");
+    }
+    function repeatOperation(interval) {
+      performOperation();
+      return setInterval(performOperation, interval);
+    }
+
+    document.getElementById("startButton").addEventListener("click", function() {
+      const interval = parseInt(document.getElementById("intervalInput").value);
+      if (!isNaN(interval) && interval > 0) {
+        const intervalId = repeatOperation(interval);
+        console.log("Операция будет выполнена через каждые " + interval + " миллисекунд.");
+      } else {
+        console.error("Неверный интервал.");
+      }
+    });
+  </script>
+</body>
+</html>

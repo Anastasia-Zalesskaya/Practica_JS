@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Arrays</title>
+</head>
+<body>
+
+<script>
+function increaseNumbers(arr) {
+    if (!Array.isArray(arr)) {
+        console.error("Переданный аргумент не является массивом.");
+        return;
+    }
+
+    for (let i = 0; i < arr.length; i++) {
+        if (typeof arr[i] === 'number') {
+            arr[i] *= 1.1; 
+        } else {
+            console.warn(`Элемент с индексом ${i} не является числом и будет пропущен.`);
+        }
+    }
+
+    return arr;
+}
+
+let numbers = [10, 20, 30, 40, 50];
+console.log("Массив после увеличения чисел на 10%:", increaseNumbers(numbers));
+</script>
+
+</body>
+</html>

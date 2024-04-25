@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Variables</title>
+<script>
+function scopeDemo() {
+    var x_var = 10;
+    let x_let = 20;
+    const x_const = 30;
+
+    console.log("Inside the function:");
+    console.log("x_var:", x_var);
+    console.log("x_let:", x_let);
+    console.log("x_const:", x_const);
+}
+
+console.log("Outside the function:");
+console.log("x_var:", x_var); 
+console.log("x_let:", x_let); 
+console.log("x_const:", x_const); 
+</script>
+</head>
+<body>
+<button onclick="scopeDemo()">Запустить функцию</button>
+</body>
+</html>

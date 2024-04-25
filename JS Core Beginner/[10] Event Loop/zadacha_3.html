@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Event Loop</title>
+</head>
+<body>
+    <script>
+        function generateRandomDelay() {
+        return new Promise((resolve, reject) => {
+            const randomNumber = Math.floor(Math.random() * 10) + 1;
+            console.log('Сгенерированное число:', randomNumber);
+            setTimeout(() => {
+            if (randomNumber <= 5) {
+                resolve(randomNumber);
+            } else {
+                reject(new Error('Сгенерированное число больше 5')); 
+            }
+            }, randomNumber * 1000); 
+        });
+        }
+        generateRandomDelay()
+        .then(randomNumber => {
+            console.log('Промис успешно выполнен. Сгенерированное число:', randomNumber);
+        })
+        .catch(error => {
+            console.error('Промис завершен с ошибкой:', error.message);
+        });
+    </script>
+</body>
+</html>
